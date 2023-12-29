@@ -6,7 +6,7 @@ public interface IKitchenObjectParent
 
     public void SetKitchenObject(KitchenObject kitchenObject);
 
-    public KitchenObject GetKitchenObject(KitchenObject kitchen);
+    public KitchenObject GetKitchenObject();
 
     public void ClearKitchenObject();
 

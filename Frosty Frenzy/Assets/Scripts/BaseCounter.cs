@@ -23,7 +23,7 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent
         this.kitchenObject = kitchenObject;
     }
 
-    public KitchenObject GetKitchenObject(KitchenObject kitchen)
+    public KitchenObject GetKitchenObject()
     {
         return kitchenObject;
     }
