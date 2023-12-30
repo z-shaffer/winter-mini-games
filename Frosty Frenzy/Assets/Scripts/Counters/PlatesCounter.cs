@@ -29,7 +29,7 @@ public class PlatesCounter : BaseCounter
 
     public override void Interact(Player player)
     {
-        if (player.HasKitchenObject())
+        if (!player.HasKitchenObject())
         {
             // Player has no object
             if (platesSpawnedAmount > 0)
