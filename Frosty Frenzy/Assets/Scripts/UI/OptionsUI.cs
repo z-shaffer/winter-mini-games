@@ -10,6 +10,7 @@ public class OptionsUI : MonoBehaviour
 
     [SerializeField] private Button soundEffectsButton;
     [SerializeField] private Button musicButton;
+    [SerializeField] private Button closeButton;
     [SerializeField] private TextMeshProUGUI soundEffectsText;
     [SerializeField] private TextMeshProUGUI musicText;
 
@@ -19,16 +20,32 @@ public class OptionsUI : MonoBehaviour
         soundEffectsButton.onClick.AddListener(() =>
         {
             SoundManager.Instance.ChangeVolume();
-            updateVisual();
+            UpdateVisual();
         });
         musicButton.onClick.AddListener(() =>
         {
             MusicManager.Instance.ChangeVolume();
-            updateVisual();
+            UpdateVisual();
+        });
+        closeButton.onClick.AddListener(() =>
+        {
+            Hide();
         });
     }
 
-    private void updateVisual()
+    private void Start()
+    {
+        KitchenGameManager.Instance.OnGameUnpaused += KitchenManager_OnGameUnpaused;
+        UpdateVisual();
+        Hide();
+    }
+
+    private void KitchenManager_OnGameUnpaused(object sender, System.EventArgs e)
+    {
+        Hide();
+    }
+
+    private void UpdateVisual()
     {
         soundEffectsText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
         musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
