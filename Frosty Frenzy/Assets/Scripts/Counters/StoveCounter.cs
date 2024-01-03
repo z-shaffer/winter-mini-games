@@ -16,6 +16,7 @@ public class StoveCounter : BaseCounter, IHasProgress
         Frying,
         Fried,
         Burned,
+        FatalFire,
     }
 
     [SerializeField] private FryingRecipeSO[] fryingRecipeSOArray;
@@ -84,6 +85,29 @@ public class StoveCounter : BaseCounter, IHasProgress
                     }
                     break;
                 case State.Burned:
+                    burningTimer += Time.deltaTime;
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = burningTimer / burningRecipeSO.burningTimerMax
+                    });
+                    if (burningTimer > burningRecipeSO.burningTimerMax)
+                    {
+                        // Frying complete
+                        GetKitchenObject().DestroySelf();
+                        KitchenObject.SpawnKitchenObject(burningRecipeSO.output, this);
+                        state = State.Burned;
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            progressNormalized = 0f
+                        });
+                    }
+                    break;
+                case State.FatalFire:
+                    KitchenGameManager.Instance.KitchenIsOnFire();
                     break;
             }
         }

@@ -7,6 +7,7 @@ public class StoveCounterVisual : MonoBehaviour
     [SerializeField] private StoveCounter stoveCounter;
     [SerializeField] private GameObject stoveOnGameObject;
     [SerializeField] private GameObject particlesGameObject;
+    [SerializeField] private GameObject fireVisual;
 
     private void Start()
     {
@@ -15,8 +16,10 @@ public class StoveCounterVisual : MonoBehaviour
 
     private void StoveCounter_OnStateChanged(object sender, StoveCounter.OnStateChangedEventArgs e)
     {
-        bool showVisual = e.state == StoveCounter.State.Frying || e.state == StoveCounter.State.Fried;
+        bool showVisual = e.state == StoveCounter.State.Frying || e.state == StoveCounter.State.Fried || e.state == StoveCounter.State.Burned;
+        bool showFireVisual = e.state == StoveCounter.State.Burned;
         stoveOnGameObject.SetActive(showVisual);
         particlesGameObject.SetActive(showVisual);
+        //fireVisual.SetActive(showFireVisual);
     }
 }
