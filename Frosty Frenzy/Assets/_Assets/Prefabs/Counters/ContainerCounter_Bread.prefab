@@ -76,7 +76,8 @@ PrefabInstance:
       value: ContainerCounter_Bread
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7622444303907721607, guid: deedac328da0444c89ad2a250874c22f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deedac328da0444c89ad2a250874c22f, type: 3}

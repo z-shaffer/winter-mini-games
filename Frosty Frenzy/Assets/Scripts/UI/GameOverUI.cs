@@ -19,6 +19,7 @@ public class GameOverUI : MonoBehaviour
         {
             Show();
             recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
+            Invoke("ReturnToMenu", 5f);
         }
         else
         {
@@ -34,5 +35,10 @@ public class GameOverUI : MonoBehaviour
     private void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void ReturnToMenu()
+    {
+        Loader.Load(Loader.Scene.MainMenuScene);
     }
 }

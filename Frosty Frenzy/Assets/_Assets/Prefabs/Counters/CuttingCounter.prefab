@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7398771634956237162, guid: d72bee846803d074784ffb8f64e993ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddeee0face48cd346be478cda5ba7071, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -470,7 +475,9 @@ PrefabInstance:
       value: CuttingCounter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5685201385382456327, guid: 5ae4544da45c941dfb1f96ecd773f970, type: 3}
+    - {fileID: 6440465711530878414, guid: 5ae4544da45c941dfb1f96ecd773f970, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6928318181335512274, guid: 5ae4544da45c941dfb1f96ecd773f970,
         type: 3}
