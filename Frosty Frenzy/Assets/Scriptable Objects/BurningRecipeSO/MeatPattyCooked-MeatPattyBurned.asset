@@ -15,3 +15,4 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: aba2cd352848e4eb39ee53fc712c4957, type: 2}
   output: {fileID: 11400000, guid: 059759047aa44469695be812888e94bd, type: 2}
   burningTimerMax: 5
+  burnedTimerMax: 5

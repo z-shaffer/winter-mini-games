@@ -20,6 +20,6 @@ public class StoveCounterVisual : MonoBehaviour
         bool showFireVisual = e.state == StoveCounter.State.Burned;
         stoveOnGameObject.SetActive(showVisual);
         particlesGameObject.SetActive(showVisual);
-        //fireVisual.SetActive(showFireVisual);
+        fireVisual.SetActive(showFireVisual);
     }
 }

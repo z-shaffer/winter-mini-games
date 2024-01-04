@@ -25,6 +25,7 @@ public class StoveCounter : BaseCounter, IHasProgress
     private State state;
     private float fryingTimer;
     private float burningTimer;
+    private float burnedTimer;
     private FryingRecipeSO fryingRecipeSO;
     private BurningRecipeSO burningRecipeSO;
 
@@ -85,17 +86,14 @@ public class StoveCounter : BaseCounter, IHasProgress
                     }
                     break;
                 case State.Burned:
-                    burningTimer += Time.deltaTime;
+                    burnedTimer += Time.deltaTime;
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
-                        progressNormalized = burningTimer / burningRecipeSO.burningTimerMax
+                        progressNormalized = burnedTimer / burningRecipeSO.burnedTimerMax
                     });
-                    if (burningTimer > burningRecipeSO.burningTimerMax)
+                    if (burnedTimer > burningRecipeSO.burnedTimerMax)
                     {
-                        // Frying complete
-                        GetKitchenObject().DestroySelf();
-                        KitchenObject.SpawnKitchenObject(burningRecipeSO.output, this);
-                        state = State.Burned;
+                        state = State.FatalFire;
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                         {
                             state = state

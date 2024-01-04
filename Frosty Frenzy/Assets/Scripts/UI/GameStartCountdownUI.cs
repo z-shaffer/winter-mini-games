@@ -37,7 +37,14 @@ public class GameStartCountdownUI : MonoBehaviour
     private void Update()
     {
         int countdownNumber = Mathf.CeilToInt(KitchenGameManager.Instance.GetCountdownToStartTimer());
-        countdownText.text = countdownNumber.ToString();
+        if (!KitchenGameManager.Instance.IsCountdownToStartActive())
+        {
+            countdownText.text = "READY!?";
+        }
+        else
+        {
+            countdownText.text = countdownNumber.ToString();
+        }
         if (previousCountdownNumber != countdownNumber)
         {
             previousCountdownNumber = countdownNumber;
